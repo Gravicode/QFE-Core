@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="QFE.WPF.Usercontrols.ListAyah"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HtmlToXamlConvert;assembly=HtmlToXamlConvert"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="1280">
+    <DockPanel>
+        <DockPanel.Resources>
+          
+        </DockPanel.Resources>
+        <ListView  Background="Transparent" ScrollViewer.IsDeferredScrollingEnabled="True" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Name="ListData" Grid.Row="1" Padding="0" Margin="0" BorderBrush="Transparent" BorderThickness="0" >
+            <!--ScrollViewer.CanContentScroll="False"-->
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <!--<StackPanel/>
+                    If StackPanel was used, the memory consumed was over 2GB and dead slow.
+                    -->
+                    <VirtualizingStackPanel VirtualizingPanel.VirtualizationMode="Recycling">
+                        <!--Memory footprint is only 200 mb-->
+                    </VirtualizingStackPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid RenderOptions.BitmapScalingMode="NearestNeighbor" Name="MainGrid" Margin="-5 -1 -5 -1" HorizontalAlignment="Stretch" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <DockPanel Background="#213826" Grid.Row="0">
+                            <TextBlock Name="AyatLbl" Padding="10 10 10 5" FlowDirection="RightToLeft" TextWrapping="Wrap"  FontSize="{Binding VerseSize}"  FontFamily="/QFE.WPF;component/Resources/UthmanicHafs1Ver09.otf#KFGQPC Uthmanic Script HAFS">
+                                <Run Text="{Binding content}" Name="Ayat" Foreground="White" />
+                                <Run FlowDirection="LeftToRight" Foreground="GreenYellow" Text="{Binding ayah}" />
+                            </TextBlock>
+                        </DockPanel>
+                        <DockPanel Background="#213826" Grid.Row="1">
+                            <TextBlock Foreground="White" FlowDirection="LeftToRight" local:HtmlTextBoxProperties.HtmlText="{Binding transliteration}" Padding="10 0 10 5" TextWrapping="Wrap"  FontSize="20"  FontFamily="/QFE.WPF;component/Resources/AdobeArabic-Regular.otf#Adobe Arabic" >
+                            </TextBlock>
+
+                        </DockPanel>
+                        <DockPanel Background="#315338" Grid.Row="2">
+                            <TextBlock FlowDirection="LeftToRight" Padding="10 0 10 5" TextWrapping="Wrap"  FontSize="12">
+                            <Run Text="{Binding translation}" Foreground="White"></Run>
+                            </TextBlock>
+                        </DockPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </DockPanel>
+</UserControl>

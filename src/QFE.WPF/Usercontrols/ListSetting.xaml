@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="QFE.WPF.Usercontrols.ListSetting"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <DockPanel Grid.Column="0">
+            <Rectangle Fill="White" Margin="10 5 10 5" ></Rectangle>
+        </DockPanel>
+        <StackPanel Margin="0 0 0 5" Grid.Column="1" Orientation="Vertical">
+            <Label Content="Volume" Foreground="White"></Label>
+            <Slider Margin="0 0 5 0" Minimum="0" Maximum="1" Value="0.5"  Name="VolumeSlide" />
+            <Label Content="Verse Size" Foreground="White"></Label>
+            <Slider Margin="0 0 5 0" Minimum="20" Maximum="50" Name="VerseSlider" Value="30" />
+
+            <Label Content="Click Action" Foreground="White"></Label>
+            <ComboBox Margin="5 0 5 0" Name="ClickCmb" >
+                <ComboBoxItem IsSelected="True">Read Quran</ComboBoxItem>
+                <ComboBoxItem>Read Translation (English)</ComboBoxItem>
+                <ComboBoxItem>Just Mark Verse</ComboBoxItem>
+            </ComboBox>
+
+            <Label Content="Play Mode" Foreground="White"></Label>
+            <ComboBox Margin="5 0 5 0" Name="PlayCmb" >
+                <ComboBoxItem >Repeat per Ayah</ComboBoxItem>
+                <ComboBoxItem>Repeat per Surah</ComboBoxItem>
+                <ComboBoxItem IsSelected="True">Continuous</ComboBoxItem>
+            </ComboBox>
+
+            <CheckBox Margin="5 5 5 0" Name="VoiceChk" Content="Voice Command" Foreground="White" />
+            <CheckBox Margin="5 5 5 0" Name="GestureChk" Content="Gesture Navigation" Foreground="White" />
+            <CheckBox Margin="5 5 5 0" Name="AutoShutdownChk" Content="Close when nobody watch" Foreground="White" />
+        </StackPanel>
+    </Grid>
+</UserControl>

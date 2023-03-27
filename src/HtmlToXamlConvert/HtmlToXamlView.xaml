@@ -1,0 +1,33 @@
+﻿<Window x:Class="HtmlToXamlConvert.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:HtmlToXamlConvert"
+    Title="HTML to XAML Sample App" Height="400" Width="600" Padding="10">
+    <StackPanel
+        Margin="10"
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        Orientation="Vertical">
+        <TextBox
+            x:Name="HtmlTextBox"
+            AcceptsReturn="True"
+            AcceptsTab="True"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top"
+            Height="100"
+            Text="{Binding TheHTMLToBind, Mode=TwoWay}"
+            />
+        <Button            
+            HorizontalAlignment="Right"
+            Margin="0 5 0 10"
+            Content="Bind it"
+            Command="{Binding BindTheHTML}"
+            CommandParameter="{Binding ElementName=HtmlTextBox, Path=Text}"></Button>
+        <TextBlock
+            x:Name="BoundHtmlBlock"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
+            local:HtmlTextBoxProperties.HtmlText="{Binding ParsedHTML}"
+            />
+    </StackPanel>
+</Window>
